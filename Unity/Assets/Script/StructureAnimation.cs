@@ -9,7 +9,9 @@ public class StructureAnimation : MonoBehaviour
     public GameObject JointPrefab;
     public GameObject FramePrefab;
 
-    private const string _geometryDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\geometry.csv";
+    private const string _beamsDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\beams.csv";
+    private const string _bracesDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\braces.csv";
+    private const string _columnsDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\columns.csv";
     private const string _jointDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\joints.csv";
 
     private Dictionary<string, List<string>> _members = new Dictionary<string, List<string>>();
@@ -39,8 +41,14 @@ public class StructureAnimation : MonoBehaviour
         }
 
         //get geometry members into a dictionary by name with vertices as the value
-        var geometryData = ReadCSV(_geometryDataFilepath);
-        for (int i = 3; i < geometryData.Count; i++) //formated to start at index 3
+        List<string[]> geometryData = new List<string[]>();
+        var beams = ReadCSV(_beamsDataFilepath); beams.RemoveRange(0, Mathf.Min(3, beams.Count));
+        geometryData.AddRange(beams);
+        var braces = ReadCSV(_bracesDataFilepath); braces.RemoveRange(0, Mathf.Min(3, braces.Count));
+        geometryData.AddRange(braces);
+        var columns = ReadCSV(_columnsDataFilepath); columns.RemoveRange(0, Mathf.Min(3, columns.Count));
+        geometryData.AddRange(columns);
+        for (int i = 0; i < geometryData.Count; i++)
         {
             //0 = name, 3 = start, 4 = end
             var parts = geometryData[i];
@@ -89,6 +97,7 @@ public class StructureAnimation : MonoBehaviour
             var pos = (startGO.transform.position + endGO.transform.position) / 2.00f;
             var dir = endGO.transform.position - startGO.transform.position;
             var length = dir.magnitude;
+            Debug.Log(dir);
 
             frame.transform.position = pos;
             //frame.transform.LookAt(endGO.transform.position);
