@@ -1,4 +1,4 @@
-$ File C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.$et saved 11/5/2022 1:51:26 PM
+$ File C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.$et saved 11/5/2022 2:52:14 PM
  
 $ PROGRAM INFORMATION
   PROGRAM  "ETABS"  VERSION "19.1.0"  
@@ -489,6 +489,10 @@ $ FUNCTIONS
   FUNCTION "UnifTH"  TIMEVAL "0  1  1  1"  
   FUNCTION "UnifRS"  FUNCTYPE "SPECTRUM"  DAMPRATIO 0.05  SPECTYPE "USER"  
   FUNCTION "UnifRS"  TIMEVAL "0  1  1  1"  
+  FUNCTION "x_dir"  FUNCTYPE "HISTORY"  FILE "C:\Users\ktam\GitHub\Seism-sim\Seis Curve\Processed\x_dir.dat"  DATATYPE "T&V"
+  FUNCTION "x_dir"  POINTSPERLINE 1  FORMAT "FREE"  
+  FUNCTION "z_dir"  FUNCTYPE "HISTORY"  FILE "C:\Users\ktam\GitHub\Seism-sim\Seis Curve\Processed\z_dir.dat"  DATATYPE "T&V"
+  FUNCTION "z_dir"  POINTSPERLINE 1  FORMAT "FREE"  
 
 $ GENERALIZED DISPLACEMENTS
 
@@ -507,6 +511,12 @@ $ LOAD CASES
   LOADCASE "FEQ"  LOADPAT  "FEQ"  SF  1 
   LOADCASE "WIND"  TYPE  "Linear Static"  INITCOND  "PRESET"  
   LOADCASE "WIND"  LOADPAT  "WIND"  SF  1 
+  LOADCASE "TH-EQ"  TYPE  "Linear Modal History"  MODALCASE  "Modal"  
+  LOADCASE "TH-EQ"  ACCEL  "U1"  FUNC  "x_dir"  SF  1 
+  LOADCASE "TH-EQ"  ACCEL  "U3"  FUNC  "z_dir"  SF  0.65 
+  LOADCASE "TH-EQ"  NUMBEROUTPUTSTEPS  100 OUTPUTSTEPSIZE  0.1 
+  LOADCASE "TH-EQ"  MODALDAMPTYPE  "Constant"  CONSTDAMP  0.02 
+  LOADCASE "TH-EQ"  NUMBEROUTPUTSTEPS  100 OUTPUTSTEPSIZE  0.1 
 
 $ LOAD COMBINATIONS
   COMBO "G1"  TYPE "Linear Add"  
@@ -906,6 +916,13 @@ ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Ha
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 12:13:29 PM
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 12:13:31 PM
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 1:51:25 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:21:13 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:21:15 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:21:15 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:21:17 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:51:45 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:52:08 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:52:14 PM
   ENDCOMMENTS  
 
   END
