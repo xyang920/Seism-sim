@@ -58,10 +58,10 @@ public class Frame : MonoBehaviour
         var topPos = TopFlange.transform.localPosition;
         var botPos = BotFlange.transform.localPosition;
         var vertAdjust = flangeThickness / totalDepth / 2.00f;
-        Debug.Log(vertAdjust);
+        //Debug.Log(vertAdjust);
         topPos.y = 0.5f - vertAdjust;
         botPos.y = -0.5f + vertAdjust;
-        TopFlange.transform.localPosition = topPos; Debug.Log(topPos);
-        BotFlange.transform.localPosition = botPos; Debug.Log(botPos);
+        TopFlange.transform.localPosition = topPos; //Debug.Log(topPos);
+        BotFlange.transform.localPosition = botPos; //Debug.Log(botPos);
     }
 }
