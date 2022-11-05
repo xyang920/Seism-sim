@@ -14,7 +14,7 @@ public class StructureAnimation : MonoBehaviour
     private const string _columnsDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\columns.csv";
     private const string _jointDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\joints.csv";
     private const string _frameSectionFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\frameSection.csv";
-    //private const string _timeDisplacementDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\timeDisplacement.csv";
+    private const string _timeDisplacementDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\timeDisplacement.csv";
 
     private const float _mmToFeet = 0.00328084f;
 
@@ -23,10 +23,16 @@ public class StructureAnimation : MonoBehaviour
 
     private Dictionary<string, GameObject> _joints = new Dictionary<string, GameObject>();
     private Dictionary<string, GameObject> _frames = new Dictionary<string, GameObject>();
+    private Dictionary<int, List<string>> _jointsByStory = new Dictionary<int, List<string>>();
+
+    private List<string[]> timeDisplacementData = new List<string[]>();
 
     // Start is called before the first frame update
     private void Start()
     {
+        //get time displacement
+        timeDisplacementData = ReadCSV(_timeDisplacementDataFilepath);
+
         //get frame sections, this doens't need to be global
         var frameSectionData = ReadCSV(_frameSectionFilepath);
         Dictionary<string, string[]> frameSections = new Dictionary<string, string[]>();
