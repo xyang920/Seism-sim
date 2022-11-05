@@ -7,12 +7,14 @@ using System.IO;
 public class StructureAnimation : MonoBehaviour
 {
     public GameObject JointPrefab;
+    public GameObject FramePrefab;
 
     private const string _geometryDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\geometry.csv";
     private const string _jointDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\joints.csv";
 
     private Dictionary<string, List<string>> _members = new Dictionary<string, List<string>>();
     private Dictionary<string, GameObject> _joints = new Dictionary<string, GameObject>();
+    private Dictionary<string, GameObject> _frames = new Dictionary<string, GameObject>();
 
     // Start is called before the first frame update
     private void Start()
@@ -32,6 +34,7 @@ public class StructureAnimation : MonoBehaviour
             var pos = new Vector3(X, Y, 0);
             Debug.Log(name + ", " + pos);
             var joint = GameObject.Instantiate(JointPrefab, pos, Quaternion.identity);
+            joint.name = "Joint " + name;
             _joints.Add(name, joint);
         }
 
@@ -63,6 +66,9 @@ public class StructureAnimation : MonoBehaviour
 
             //create member
             _members.Add(name, new List<string>() { start, end });
+            var frame = GameObject.Instantiate(FramePrefab);
+            frame.name = "Frame " + name;
+            _frames.Add(name, frame);
         }
     }
 
@@ -72,6 +78,24 @@ public class StructureAnimation : MonoBehaviour
         //TODO: Update joint displacement
 
         //TODO: Update members based on joints
+        foreach (KeyValuePair<string, GameObject> kvp in _frames)
+        {
+            var name = kvp.Key;
+            var frame = kvp.Value;
+            var jointNames = _members[name];
+            var startGO = _joints[jointNames[0]];
+            var endGO = _joints[jointNames[1]];
+
+            var pos = (startGO.transform.position + endGO.transform.position) / 2.00f;
+            var dir = endGO.transform.position - startGO.transform.position;
+            var length = dir.magnitude;
+
+            frame.transform.position = pos;
+            //frame.transform.LookAt(endGO.transform.position);
+            var scale = new Vector3(1, 1, length);
+            frame.transform.localScale = scale;
+            frame.transform.forward = dir;
+        }
     }
 
     private List<string[]> ReadCSV(string filepath)

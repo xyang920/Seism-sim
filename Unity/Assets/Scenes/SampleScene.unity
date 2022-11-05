@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JointPrefab: {fileID: 6833524527411205588, guid: d78dd96c38752fc49b6792edf01c361b, type: 3}
+  FramePrefab: {fileID: 4312762247722220466, guid: 118527b41d5fdd44d9bcc475f452551a, type: 3}
 --- !u!4 &1781656599
 Transform:
   m_ObjectHideFlags: 0
