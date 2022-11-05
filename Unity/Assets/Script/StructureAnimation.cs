@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using System.IO;
+using System.Linq;
 
 public class StructureAnimation : MonoBehaviour
 {
@@ -21,9 +22,8 @@ public class StructureAnimation : MonoBehaviour
     //string = frame, List<string> = 2 x Joint names
     private Dictionary<string, List<string>> _connections = new Dictionary<string, List<string>>();
 
-    private Dictionary<string, GameObject> _joints = new Dictionary<string, GameObject>();
+    private Dictionary<string, Joint> _joints = new Dictionary<string, Joint>();
     private Dictionary<string, GameObject> _frames = new Dictionary<string, GameObject>();
-    private Dictionary<int, List<string>> _jointsByStory = new Dictionary<int, List<string>>();
 
     private List<string[]> timeDisplacementData = new List<string[]>();
 
@@ -49,7 +49,7 @@ public class StructureAnimation : MonoBehaviour
         var jointData = ReadCSV(_jointDataFilepath);
         for (int i = 3; i < jointData.Count; i++) //formated to start at index 3
         {
-            //0 = name, 5 = X, 7 = Z (translate to Y for Unity purposes)
+            //0 = name, 2 = Story, 5 = X, 7 = Z (translate to Y for Unity purposes)
             var row = jointData[i];
             if (row.Length <= 7) { continue; }
             string name = row[0];
@@ -59,8 +59,19 @@ public class StructureAnimation : MonoBehaviour
             float Y = float.Parse(row[7]);//CAD Z Value
             var pos = new Vector3(X, Y, 0);
             //Debug.Log(name + ", " + pos);
-            var joint = GameObject.Instantiate(JointPrefab, pos, Quaternion.identity);
-            joint.name = "Joint " + name;
+            var go = GameObject.Instantiate(JointPrefab, pos, Quaternion.identity);
+
+            //get story by stripping everything but numerics and converting to int
+            int story = 0;
+            string storyText = row[2];
+            if (storyText.ToLower() != "base")
+            {
+                storyText = GetNumbers(row[2]);
+                Debug.Log(storyText);
+                int.TryParse(storyText, out story);
+            }
+            //setup Joint Object
+            var joint = new Joint(name, pos, story, go);
             _joints.Add(name, joint);
         }
 
@@ -82,19 +93,8 @@ public class StructureAnimation : MonoBehaviour
             string start = parts[3];
             string end = parts[4];
 
-            //add joint gameobjects to scene
-            if (!_joints.ContainsKey(start))
-            {
-                var go = new GameObject();
-                go.name = start;
-                _joints.Add(start, go);
-            }
-            if (!_joints.ContainsKey(end))
-            {
-                var go = new GameObject();
-                go.name = end;
-                _joints.Add(end, go);
-            }
+            //skip if the joints don't exist (they should exist)
+            if (!_joints.ContainsKey(start) || !_joints.ContainsKey(end)) { continue; }
 
             //create member
             _connections.Add(name, new List<string>() { start, end });
@@ -127,8 +127,10 @@ public class StructureAnimation : MonoBehaviour
             var name = kvp.Key;
             var frame = kvp.Value;
             var jointNames = _connections[name];
-            var startGO = _joints[jointNames[0]];
-            var endGO = _joints[jointNames[1]];
+            var startJoint = _joints[jointNames[0]];
+            var endJoint = _joints[jointNames[1]];
+            var startGO = startJoint.GameObject;
+            var endGO = endJoint.GameObject;
 
             var pos = (startGO.transform.position + endGO.transform.position) / 2.00f;
             var dir = endGO.transform.position - startGO.transform.position;
@@ -143,6 +145,11 @@ public class StructureAnimation : MonoBehaviour
         }
     }
 
+    private static string GetNumbers(string input)
+    {
+        return new string(input.Where(c => char.IsDigit(c)).ToArray());
+    }
+
     private List<string[]> ReadCSV(string filepath)
     {
         var lines = File.ReadAllLines(filepath);
@@ -154,5 +161,22 @@ public class StructureAnimation : MonoBehaviour
             data.Add(parts);
         }
         return data;
+    }
+}
+
+public class Joint
+{
+    public Vector3 Position;
+    public string Name;
+    public int Story;
+    public GameObject GameObject;
+
+    public Joint(string name, Vector3 position, int story, GameObject gameObject)
+    {
+        Position = position;
+        Name = name;
+        Story = story;
+        GameObject = gameObject;
+        GameObject.name = "Joint " + name;
     }
 }
