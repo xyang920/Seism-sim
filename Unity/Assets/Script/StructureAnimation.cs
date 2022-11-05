@@ -7,7 +7,12 @@ using System.Linq;
 
 public class StructureAnimation : MonoBehaviour
 {
+    [Header("Animation")]
+    public float AnimationSpeed = 0.1f;
+
+    [Header("Prefab Game Objects")]
     public GameObject JointPrefab;
+
     public GameObject FramePrefab;
 
     private const string _beamsDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\beams.csv";
@@ -25,13 +30,25 @@ public class StructureAnimation : MonoBehaviour
     private Dictionary<string, Joint> _joints = new Dictionary<string, Joint>();
     private Dictionary<string, GameObject> _frames = new Dictionary<string, GameObject>();
 
-    private List<string[]> timeDisplacementData = new List<string[]>();
+    private List<float[]> timeDisplacementData = new List<float[]>();
+    private float _time = 0;
+    private int _currentTimeDisplacementIndex = 0;
 
     // Start is called before the first frame update
     private void Start()
     {
         //get time displacement
-        timeDisplacementData = ReadCSV(_timeDisplacementDataFilepath);
+        var strTimeDisplacementData = ReadCSV(_timeDisplacementDataFilepath);
+        for (int i = 3; i < strTimeDisplacementData.Count; i++)
+        {
+            var row = strTimeDisplacementData[i];
+            List<float> floats = new List<float>();
+            foreach (var str in row)
+            {
+                floats.Add(float.Parse(str));
+            }
+            timeDisplacementData.Add(floats.ToArray());
+        }
 
         //get frame sections, this doens't need to be global
         var frameSectionData = ReadCSV(_frameSectionFilepath);
@@ -120,6 +137,24 @@ public class StructureAnimation : MonoBehaviour
     private void Update()
     {
         //Update joint displacement
+        _time += Time.deltaTime;
+        if (_time >= AnimationSpeed)
+        {
+            _time = 0;
+            var displacement = timeDisplacementData[_currentTimeDisplacementIndex];
+            _currentTimeDisplacementIndex++;//increment so that next update we get the next frame
+            if (_currentTimeDisplacementIndex >= timeDisplacementData.Count) { _currentTimeDisplacementIndex = 0; } //loop
+
+            //update position by level
+            foreach (var kvp in _joints)
+            {
+                var joint = kvp.Value;
+                var adjust = displacement[joint.Story];
+                var pos = joint.Position;
+                pos.x += adjust * _mmToFeet;
+                joint.GameObject.transform.position = pos;
+            }
+        }
 
         //Update members based on joints
         foreach (KeyValuePair<string, GameObject> kvp in _frames)
