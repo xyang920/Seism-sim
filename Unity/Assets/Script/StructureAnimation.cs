@@ -10,6 +10,8 @@ public class StructureAnimation : MonoBehaviour
     [Header("Animation")]
     public float AnimationSpeed = 0.1f;
 
+    public GameObject Platform;
+
     [Header("Prefab Game Objects")]
     public GameObject JointPrefab;
 
@@ -21,6 +23,7 @@ public class StructureAnimation : MonoBehaviour
     private const string _jointDataFilepath = @"\Data\joints.csv";
     private const string _frameSectionFilepath = @"\Data\frameSection.csv";
     private const string _timeDisplacementDataFilepath = @"\Data\timeDisplacement.csv";
+    private const string _groundDisplacementDataFilepath = @"\Data\groundDisplacement.csv";
 
     private const float _mmToFeet = 0.00328084f;
 
@@ -31,6 +34,7 @@ public class StructureAnimation : MonoBehaviour
     private Dictionary<string, GameObject> _frames = new Dictionary<string, GameObject>();
 
     private List<float[]> timeDisplacementData = new List<float[]>();
+    private List<float[]> groundDisplacementData = new List<float[]>();
     private float _time = 0;
     private int _currentTimeDisplacementIndex = 0;
 
@@ -46,6 +50,7 @@ public class StructureAnimation : MonoBehaviour
         string jointDataFilepath = m_Path + _jointDataFilepath;
         string frameSectionFilepath = m_Path + _frameSectionFilepath;
         string timeDisplacementDataFilepath = m_Path + _timeDisplacementDataFilepath;
+        string goundDisplacementDataFilepath = m_Path + _groundDisplacementDataFilepath;
 
         //get time displacement
         var strTimeDisplacementData = ReadCSV(timeDisplacementDataFilepath);
@@ -58,6 +63,19 @@ public class StructureAnimation : MonoBehaviour
                 floats.Add(float.Parse(str));
             }
             timeDisplacementData.Add(floats.ToArray());
+        }
+
+        //get time displacement
+        var strGroundDisplacementData = ReadCSV(goundDisplacementDataFilepath);
+        for (int i = 3; i < strTimeDisplacementData.Count; i++)
+        {
+            var row = strTimeDisplacementData[i];
+            List<float> floats = new List<float>();
+            foreach (var str in row)
+            {
+                floats.Add(float.Parse(str));
+            }
+            groundDisplacementData.Add(floats.ToArray());
         }
 
         //get frame sections, this doens't need to be global
@@ -155,6 +173,10 @@ public class StructureAnimation : MonoBehaviour
             _currentTimeDisplacementIndex++;//increment so that next update we get the next frame
             if (_currentTimeDisplacementIndex >= timeDisplacementData.Count) { _currentTimeDisplacementIndex = 0; } //loop
 
+            var groundDisplacement = groundDisplacementData[_currentTimeDisplacementIndex];
+
+            float ground = groundDisplacement[1];
+
             //update position by level
             foreach (var kvp in _joints)
             {
@@ -162,6 +184,7 @@ public class StructureAnimation : MonoBehaviour
                 var adjust = displacement[joint.Story];
                 var pos = joint.Position;
                 pos.x += adjust * _mmToFeet;
+                pos.x += ground * _mmToFeet;
                 joint.GameObject.transform.position = pos;
             }
         }
