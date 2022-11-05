@@ -1,0 +1,25 @@
+[user]
+    email = blueyxq@163.com
+    name = blueyxq
+
+[color]
+    diff = auto
+    status = auto
+    ui = auto
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red
+    new = green
+
+[alias]
+    pm = "!git push -u origin master"
+    c = commit -m
+    co = checkout
+    a = add -A
+    st = status
+    pu = push
+    
+[push]
+    default = simple

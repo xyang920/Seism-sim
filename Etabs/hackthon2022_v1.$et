@@ -1,4 +1,4 @@
-$ File C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.$et saved 11/5/2022 11:51:07 AM
+$ File C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.$et saved 11/5/2022 12:13:26 PM
  
 $ PROGRAM INFORMATION
   PROGRAM  "ETABS"  VERSION "19.1.0"  
@@ -380,56 +380,56 @@ $ LOAD PATTERNS
 
 $ POINT OBJECT LOADS
   POINTLOAD  "1"  "Story2"  TYPE "FORCE"  LC "WIND"  FX 7500
-  POINTLOAD  "1"  "Story2"  TYPE "FORCE"  LC "SDL"    FZ -300000
+  POINTLOAD  "1"  "Story2"  TYPE "FORCE"  LC "SDL"  FX 100000
   POINTLOAD  "1"  "Story2"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "7"  "Story2"  TYPE "FORCE"  LC "MASS"    FZ -325000
   POINTLOAD  "6"  "Story2"  TYPE "FORCE"  LC "WIND"  FX 7500
   POINTLOAD  "6"  "Story2"  TYPE "FORCE"  LC "SDL"    FZ -300000
   POINTLOAD  "6"  "Story2"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "1"  "Story1"  TYPE "FORCE"  LC "WIND"  FX 7500
-  POINTLOAD  "1"  "Story1"  TYPE "FORCE"  LC "SDL"    FZ -300000
+  POINTLOAD  "1"  "Story1"  TYPE "FORCE"  LC "SDL"  FX 100000
   POINTLOAD  "1"  "Story1"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "7"  "Story1"  TYPE "FORCE"  LC "MASS"    FZ -325000
   POINTLOAD  "6"  "Story1"  TYPE "FORCE"  LC "WIND"  FX 7500
   POINTLOAD  "6"  "Story1"  TYPE "FORCE"  LC "SDL"    FZ -300000
   POINTLOAD  "6"  "Story1"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "1"  "Story3"  TYPE "FORCE"  LC "WIND"  FX 7500
-  POINTLOAD  "1"  "Story3"  TYPE "FORCE"  LC "SDL"    FZ -300000
+  POINTLOAD  "1"  "Story3"  TYPE "FORCE"  LC "SDL"  FX 100000
   POINTLOAD  "1"  "Story3"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "6"  "Story3"  TYPE "FORCE"  LC "WIND"  FX 7500
   POINTLOAD  "6"  "Story3"  TYPE "FORCE"  LC "SDL"    FZ -300000
   POINTLOAD  "6"  "Story3"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "7"  "Story3"  TYPE "FORCE"  LC "MASS"    FZ -325000
   POINTLOAD  "1"  "Story4"  TYPE "FORCE"  LC "WIND"  FX 7500
-  POINTLOAD  "1"  "Story4"  TYPE "FORCE"  LC "SDL"    FZ -300000
+  POINTLOAD  "1"  "Story4"  TYPE "FORCE"  LC "SDL"  FX 100000
   POINTLOAD  "1"  "Story4"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "6"  "Story4"  TYPE "FORCE"  LC "WIND"  FX 7500
   POINTLOAD  "6"  "Story4"  TYPE "FORCE"  LC "SDL"    FZ -300000
   POINTLOAD  "6"  "Story4"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "7"  "Story4"  TYPE "FORCE"  LC "MASS"    FZ -325000
   POINTLOAD  "1"  "Story5"  TYPE "FORCE"  LC "WIND"  FX 7500
-  POINTLOAD  "1"  "Story5"  TYPE "FORCE"  LC "SDL"    FZ -300000
+  POINTLOAD  "1"  "Story5"  TYPE "FORCE"  LC "SDL"  FX 100000
   POINTLOAD  "1"  "Story5"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "6"  "Story5"  TYPE "FORCE"  LC "WIND"  FX 7500
   POINTLOAD  "6"  "Story5"  TYPE "FORCE"  LC "SDL"    FZ -300000
   POINTLOAD  "6"  "Story5"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "7"  "Story5"  TYPE "FORCE"  LC "MASS"    FZ -325000
   POINTLOAD  "1"  "Story6"  TYPE "FORCE"  LC "WIND"  FX 7500
-  POINTLOAD  "1"  "Story6"  TYPE "FORCE"  LC "SDL"    FZ -300000
+  POINTLOAD  "1"  "Story6"  TYPE "FORCE"  LC "SDL"  FX 100000
   POINTLOAD  "1"  "Story6"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "6"  "Story6"  TYPE "FORCE"  LC "WIND"  FX 7500
   POINTLOAD  "6"  "Story6"  TYPE "FORCE"  LC "SDL"    FZ -300000
   POINTLOAD  "6"  "Story6"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "7"  "Story6"  TYPE "FORCE"  LC "MASS"    FZ -325000
   POINTLOAD  "1"  "Story7"  TYPE "FORCE"  LC "WIND"  FX 7500
-  POINTLOAD  "1"  "Story7"  TYPE "FORCE"  LC "SDL"    FZ -300000
+  POINTLOAD  "1"  "Story7"  TYPE "FORCE"  LC "SDL"  FX 100000
   POINTLOAD  "1"  "Story7"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "6"  "Story7"  TYPE "FORCE"  LC "WIND"  FX 7500
   POINTLOAD  "6"  "Story7"  TYPE "FORCE"  LC "SDL"    FZ -300000
   POINTLOAD  "6"  "Story7"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "7"  "Story7"  TYPE "FORCE"  LC "MASS"    FZ -325000
   POINTLOAD  "1"  "Story8"  TYPE "FORCE"  LC "WIND"  FX 7500
-  POINTLOAD  "1"  "Story8"  TYPE "FORCE"  LC "SDL"    FZ -300000
+  POINTLOAD  "1"  "Story8"  TYPE "FORCE"  LC "SDL"  FX 100000
   POINTLOAD  "1"  "Story8"  TYPE "FORCE"  LC "Live"    FZ -100000
   POINTLOAD  "6"  "Story8"  TYPE "FORCE"  LC "WIND"  FX 7500
   POINTLOAD  "6"  "Story8"  TYPE "FORCE"  LC "SDL"    FZ -300000
@@ -900,6 +900,7 @@ ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\Github\Local\py
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\Github\Local\py_CBF_designer\SAP\hackthon2022_v1.EDB at 11/5/2022 9:33:05 AM
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\Github\Local\py_CBF_designer\SAP\hackthon2022_v1.EDB at 11/5/2022 9:33:07 AM
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 11:51:07 AM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 12:13:26 PM
   ENDCOMMENTS  
 
   END
