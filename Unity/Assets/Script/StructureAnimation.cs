@@ -15,12 +15,12 @@ public class StructureAnimation : MonoBehaviour
 
     public GameObject FramePrefab;
 
-    private const string _beamsDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\beams.csv";
-    private const string _bracesDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\braces.csv";
-    private const string _columnsDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\columns.csv";
-    private const string _jointDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\joints.csv";
-    private const string _frameSectionFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\frameSection.csv";
-    private const string _timeDisplacementDataFilepath = @"C:\Users\mconway\GitHub\Seism-sim\Unity\Assets\Data\timeDisplacement.csv";
+    private const string _beamsDataFilepath = @"\Data\beams.csv";
+    private const string _bracesDataFilepath = @"\Data\braces.csv";
+    private const string _columnsDataFilepath = @"\Data\columns.csv";
+    private const string _jointDataFilepath = @"\Data\joints.csv";
+    private const string _frameSectionFilepath = @"\Data\frameSection.csv";
+    private const string _timeDisplacementDataFilepath = @"\Data\timeDisplacement.csv";
 
     private const float _mmToFeet = 0.00328084f;
 
@@ -37,8 +37,18 @@ public class StructureAnimation : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        //get relative file paths
+        string m_Path = Application.dataPath;
+        Debug.Log(m_Path);
+        string beamsDataFilepath = m_Path + _beamsDataFilepath;
+        string bracesDataFilepath = m_Path + _bracesDataFilepath;
+        string columnsDataFilepath = m_Path + _columnsDataFilepath;
+        string jointDataFilepath = m_Path + _jointDataFilepath;
+        string frameSectionFilepath = m_Path + _frameSectionFilepath;
+        string timeDisplacementDataFilepath = m_Path + _timeDisplacementDataFilepath;
+
         //get time displacement
-        var strTimeDisplacementData = ReadCSV(_timeDisplacementDataFilepath);
+        var strTimeDisplacementData = ReadCSV(timeDisplacementDataFilepath);
         for (int i = 3; i < strTimeDisplacementData.Count; i++)
         {
             var row = strTimeDisplacementData[i];
@@ -51,7 +61,7 @@ public class StructureAnimation : MonoBehaviour
         }
 
         //get frame sections, this doens't need to be global
-        var frameSectionData = ReadCSV(_frameSectionFilepath);
+        var frameSectionData = ReadCSV(frameSectionFilepath);
         Dictionary<string, string[]> frameSections = new Dictionary<string, string[]>();
         for (int i = 3; i < frameSectionData.Count; i++)
         {
@@ -63,7 +73,7 @@ public class StructureAnimation : MonoBehaviour
         }
 
         //create joints
-        var jointData = ReadCSV(_jointDataFilepath);
+        var jointData = ReadCSV(jointDataFilepath);
         for (int i = 3; i < jointData.Count; i++) //formated to start at index 3
         {
             //0 = name, 2 = Story, 5 = X, 7 = Z (translate to Y for Unity purposes)
@@ -94,11 +104,11 @@ public class StructureAnimation : MonoBehaviour
 
         //get geometry members into a dictionary by name with vertices as the value
         List<string[]> geometryData = new List<string[]>();
-        var beams = ReadCSV(_beamsDataFilepath); beams.RemoveRange(0, Mathf.Min(3, beams.Count));
+        var beams = ReadCSV(beamsDataFilepath); beams.RemoveRange(0, Mathf.Min(3, beams.Count));
         geometryData.AddRange(beams);
-        var braces = ReadCSV(_bracesDataFilepath); braces.RemoveRange(0, Mathf.Min(3, braces.Count));
+        var braces = ReadCSV(bracesDataFilepath); braces.RemoveRange(0, Mathf.Min(3, braces.Count));
         geometryData.AddRange(braces);
-        var columns = ReadCSV(_columnsDataFilepath); columns.RemoveRange(0, Mathf.Min(3, columns.Count));
+        var columns = ReadCSV(columnsDataFilepath); columns.RemoveRange(0, Mathf.Min(3, columns.Count));
         geometryData.AddRange(columns);
         for (int i = 0; i < geometryData.Count; i++)
         {
@@ -120,10 +130,10 @@ public class StructureAnimation : MonoBehaviour
             _frames.Add(name, frame);
 
             //update frame section
-            Debug.Log(name);
+            //Debug.Log(name);
             if (!frameSections.ContainsKey(name)) { continue; }
             var frameSection = frameSections[name];
-            Debug.Log(frameSection[2]);
+            //Debug.Log(frameSection[2]);
             float totalDepth = float.Parse(frameSection[2]) * _mmToFeet;
             float flangeWidth = float.Parse(frameSection[3]) * _mmToFeet;
             float flangeThickness = float.Parse(frameSection[4]) * _mmToFeet;
