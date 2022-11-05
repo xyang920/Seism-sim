@@ -1,4 +1,4 @@
-$ File C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.$et saved 11/5/2022 12:13:26 PM
+$ File C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.$et saved 11/5/2022 1:51:26 PM
  
 $ PROGRAM INFORMATION
   PROGRAM  "ETABS"  VERSION "19.1.0"  
@@ -478,8 +478,9 @@ $ ANALYSIS OPTIONS
 
 $ MASS SOURCE
   MASSSOURCE  "MsSrc1"    INCLUDEELEMENTS "No"    INCLUDEADDEDMASS "No"    INCLUDELOADS "Yes"    INCLUDEMOVE "No"    INCLUDELATERALMASS "Yes"    INCLUDEVERTICALMASS "Yes"    LUMPATSTORIES "Yes"    ISDEFAULT "Yes"  
-  MASSSOURCELOAD  "MsSrc1"  "MASS"  1 
   MASSSOURCELOAD  "MsSrc1"  "SELF"  1 
+  MASSSOURCELOAD  "MsSrc1"  "SDL"  1 
+  MASSSOURCELOAD  "MsSrc1"  "Live"  0.5 
 
 $ FUNCTIONS
   FUNCTION "RampTH"  FUNCTYPE "HISTORY"  HISTTYPE "USER"  
@@ -493,7 +494,7 @@ $ GENERALIZED DISPLACEMENTS
 
 $ LOAD CASES
   LOADCASE "Modal"  TYPE  "Modal - Eigen"  INITCOND  "PRESET"  
-  LOADCASE "Modal"  MAXMODES  12 MINMODES  1 EIGENSHIFTFREQ  0 EIGENCUTOFF  0 EIGENTOL  1E-09 
+  LOADCASE "Modal"  MAXMODES  30 MINMODES  1 EIGENSHIFTFREQ  0 EIGENCUTOFF  0 EIGENTOL  1E-09 
   LOADCASE "Dead"  TYPE  "Linear Static"  INITCOND  "PRESET"  
   LOADCASE "Dead"  LOADPAT  "SDL"  SF  1 
   LOADCASE "Live"  TYPE  "Linear Static"  INITCOND  "PRESET"  
@@ -901,6 +902,10 @@ ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\Github\Local\py
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\Github\Local\py_CBF_designer\SAP\hackthon2022_v1.EDB at 11/5/2022 9:33:07 AM
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 11:51:07 AM
 ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 12:13:26 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 12:13:29 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 12:13:29 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 12:13:31 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 1:51:25 PM
   ENDCOMMENTS  
 
   END
