@@ -1,0 +1,37 @@
+﻿TABLE:  Point Object Connectivity,,,,,,,,
+UniqueName,Is Auto Point,Story,PointBay,IsSpecial,X,Y,Z,GUID
+,,,,,ft,ft,ft,
+26,No,Story8,1,No,0,0,96,4717926c-d589-4b3b-8dee-77f975fe007f
+27,No,Story8,6,No,23,0,96,9214a1ff-08f0-4148-ab7f-965e0939045b
+28,No,Story8,7,No,11.5,0,96,09891e02-7538-46bf-85c2-2c8d2519ea04
+15,Yes,Story8,2,Yes,11.5,0,96,b9571c7a-affc-41d4-ab29-adc80a878e1e
+23,No,Story7,1,No,0,0,84,de97abe7-88b4-4f5e-9a94-a31aca128dd7
+24,No,Story7,6,No,23,0,84,7f50f202-d408-4833-b912-edbd62da71e1
+25,No,Story7,7,No,11.5,0,84,a9c9059e-694f-4d60-b474-50ed6b001fa1
+16,Yes,Story7,5,Yes,11.5,0,84,6dadbaa9-af46-4072-9e22-b3174c6a5e7c
+20,No,Story6,1,No,0,0,72,ed841751-7794-4c5a-be7d-d9871df2fc03
+21,No,Story6,6,No,23,0,72,b19828db-9515-4e57-825b-52323717a250
+22,No,Story6,7,No,11.5,0,72,988fcc00-2f45-4a95-898c-699979b844f4
+29,Yes,Story6,14,Yes,11.5,0,72,2a6ce46c-e518-47ec-8e98-d18caee63972
+17,No,Story5,1,No,0,0,60,2297439c-28ca-458a-a8f8-d4da9947d110
+18,No,Story5,6,No,23,0,60,1f2a9434-dfbf-4e31-ade1-d4330cc9e1ad
+19,No,Story5,7,No,11.5,0,60,7f0320c7-ad03-42ea-ac91-1ecdde08dd2c
+30,Yes,Story5,15,Yes,11.5,0,60,56982def-4825-406e-ab3b-c76d23ad0b3c
+12,No,Story4,1,No,0,0,48,70d6571d-044e-41eb-8555-5583c1d0f016
+13,No,Story4,6,No,23,0,48,c52978ee-4b26-4ea4-bc12-9a84b4228ff9
+14,No,Story4,7,No,11.5,0,48,ae050cd3-090e-4095-bc4e-3f0cdefd94fc
+31,Yes,Story4,16,Yes,11.5,0,48,c24ccaad-6f3f-4b20-b81b-115d9e5d9f99
+9,No,Story3,1,No,0,0,36,c989ef43-cdb6-43f9-bb88-723ffe9b10f5
+10,No,Story3,6,No,23,0,36,27534f2c-2e0d-4825-8e38-0b56e3791d62
+11,No,Story3,7,No,11.5,0,36,3e624be9-5be1-4d71-ab74-05278e782ef9
+32,Yes,Story3,17,Yes,11.5,0,36,00038406-09fe-4100-95bf-2143ff6a7957
+1,No,Story2,1,No,0,0,24,5a15df53-c718-427b-b8a3-524ad1ecbff2
+3,No,Story2,6,No,23,0,24,49c6e8f6-de88-4abc-a3df-d22092edbf2c
+2,No,Story2,7,No,11.5,0,24,7753accd-0cd7-439c-b0e2-384eaa9eb961
+33,Yes,Story2,18,Yes,11.5,0,24,c6c8a98a-de5b-4569-bf39-9b814585ee9d
+4,No,Story1,1,No,0,0,12,249b7861-8d17-4a7f-9c65-462a1757adda
+6,No,Story1,6,No,23,0,12,648c301f-f88f-4c7f-9ecc-4df4719ad82f
+5,No,Story1,7,No,11.5,0,12,2e98c083-96d7-4228-a93d-f790570b8317
+34,Yes,Story1,19,Yes,11.5,0,12,80804e8d-c7a1-480b-852b-ab1c2e9b94f7
+7,No,Base,1,No,0,0,0,fdcf67b8-eda0-4d21-adb0-763ea35ce1c2
+8,No,Base,6,No,23,0,0,8335d053-34a1-45fc-9d5c-73296f3f4bdd
