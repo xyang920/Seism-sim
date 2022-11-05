@@ -185,6 +185,10 @@ MonoBehaviour:
   TopFlange: {fileID: 2330939836608023547}
   Web: {fileID: 6299653685173738466}
   BotFlange: {fileID: 8012019700336093232}
+  TotalDepth: 1
+  FlangeWidth: 1
+  FlangeThickness: 0.1
+  WebThickness: 0.1
 --- !u!1 &6299653685173738466
 GameObject:
   m_ObjectHideFlags: 0
