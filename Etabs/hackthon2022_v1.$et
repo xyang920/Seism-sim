@@ -1,4 +1,4 @@
-$ File C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.$et saved 11/5/2022 2:52:14 PM
+$ File C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.$et saved 11/5/2022 3:11:17 PM
  
 $ PROGRAM INFORMATION
   PROGRAM  "ETABS"  VERSION "19.1.0"  
@@ -514,9 +514,9 @@ $ LOAD CASES
   LOADCASE "TH-EQ"  TYPE  "Linear Modal History"  MODALCASE  "Modal"  
   LOADCASE "TH-EQ"  ACCEL  "U1"  FUNC  "x_dir"  SF  1 
   LOADCASE "TH-EQ"  ACCEL  "U3"  FUNC  "z_dir"  SF  0.65 
-  LOADCASE "TH-EQ"  NUMBEROUTPUTSTEPS  100 OUTPUTSTEPSIZE  0.1 
+  LOADCASE "TH-EQ"  NUMBEROUTPUTSTEPS  400 OUTPUTSTEPSIZE  0.1 
   LOADCASE "TH-EQ"  MODALDAMPTYPE  "Constant"  CONSTDAMP  0.02 
-  LOADCASE "TH-EQ"  NUMBEROUTPUTSTEPS  100 OUTPUTSTEPSIZE  0.1 
+  LOADCASE "TH-EQ"  NUMBEROUTPUTSTEPS  400 OUTPUTSTEPSIZE  0.1 
 
 $ LOAD COMBINATIONS
   COMBO "G1"  TYPE "Linear Add"  
@@ -605,6 +605,16 @@ $ CONCRETE SLAB DESIGN PREFERENCES
 
 $ DIMENSION LINES
   DIMLINE DEFAULTSYSTEM G1
+
+$ NAMED PLOT FUNCTIONS
+  PLOTFUNCTION "st8"  FUNCTYPE  "Joint Displacement"  STORY  "Story8"  POINT  "1"  RESPONSETYPE  "Relative"  COMPONENT  "Ux"  SCALEFACTOR  1  LINETYPE  "Solid"  LINEWIDTH  "1"  LINECOLOR  32768 
+  PLOTFUNCTION "st7"  FUNCTYPE  "Joint Displacement"  STORY  "Story7"  POINT  "1"  RESPONSETYPE  "Relative"  COMPONENT  "Ux"  SCALEFACTOR  1  LINETYPE  "Solid"  LINEWIDTH  "1"  LINECOLOR  16711935 
+  PLOTFUNCTION "st6"  FUNCTYPE  "Joint Displacement"  STORY  "Story6"  POINT  "1"  RESPONSETYPE  "Relative"  COMPONENT  "Ux"  SCALEFACTOR  1  LINETYPE  "Solid"  LINEWIDTH  "1"  LINECOLOR  42495 
+  PLOTFUNCTION "st5"  FUNCTYPE  "Joint Displacement"  STORY  "Story5"  POINT  "1"  RESPONSETYPE  "Relative"  COMPONENT  "Ux"  SCALEFACTOR  1  LINETYPE  "Solid"  LINEWIDTH  "1"  LINECOLOR  16776960 
+  PLOTFUNCTION "st4"  FUNCTYPE  "Joint Displacement"  STORY  "Story4"  POINT  "1"  RESPONSETYPE  "Relative"  COMPONENT  "Ux"  SCALEFACTOR  1  LINETYPE  "Solid"  LINEWIDTH  "1"  LINECOLOR  0 
+  PLOTFUNCTION "st3"  FUNCTYPE  "Joint Displacement"  STORY  "Story3"  POINT  "1"  RESPONSETYPE  "Relative"  COMPONENT  "Ux"  SCALEFACTOR  1  LINETYPE  "Solid"  LINEWIDTH  "1"  LINECOLOR  139 
+  PLOTFUNCTION "st2"  FUNCTYPE  "Joint Displacement"  STORY  "Story2"  POINT  "1"  RESPONSETYPE  "Relative"  COMPONENT  "Ux"  SCALEFACTOR  1  LINETYPE  "Solid"  LINEWIDTH  "1"  LINECOLOR  9109504 
+  PLOTFUNCTION "st1"  FUNCTYPE  "Joint Displacement"  STORY  "Story1"  POINT  "1"  RESPONSETYPE  "Relative"  COMPONENT  "Ux"  SCALEFACTOR  1  LINETYPE  "Solid"  LINEWIDTH  "1"  LINECOLOR  25600 
 
 $ TABLE SETS
 
@@ -923,6 +933,20 @@ ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackth
 ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:51:45 PM
 ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:52:08 PM
 ETABS Ultimate  19.1.0 File saved as C:\Users\ktam\GitHub\Seism-sim\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:52:14 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:54:53 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:55:05 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:55:05 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:55:06 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:55:22 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:55:26 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:55:26 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 2:55:27 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 3:01:46 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 3:01:49 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 3:01:49 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 3:01:51 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 3:09:01 PM
+ETABS Ultimate  19.1.0 File saved as C:\Users\xyang\Desktop\Core\AECTECH\2022\Hackthon\Etabs\hackthon2022_v1.EDB at 11/5/2022 3:11:17 PM
   ENDCOMMENTS  
 
   END
