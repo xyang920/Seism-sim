@@ -1,0 +1,19 @@
+﻿TABLE:  Beam Object Connectivity,,,,,,
+Unique Name,Story,BeamBay,UniquePtI,UniquePtJ,Length,GUID
+,,,,,ft,
+45,Story8,B4,26,28,11.5,6e86d539-80d1-4fd9-ab67-30861acd1b6c
+46,Story8,B5,28,27,11.5,7c72cd15-f2d5-456e-9543-f8869e1ed5eb
+39,Story7,B4,23,25,11.5,5afc2698-1b68-4397-8cb6-63d5dbaf04d5
+40,Story7,B5,25,24,11.5,379e0d43-996a-494b-b292-6a0fce4fad28
+33,Story6,B4,20,22,11.5,b27cd929-1738-4399-bcfe-ae983a152f10
+34,Story6,B5,22,21,11.5,47264b89-a990-4e31-b53f-37e0775d00ea
+27,Story5,B4,17,19,11.5,fd70ae5f-21b2-49da-8c7f-0af343cff56a
+28,Story5,B5,19,18,11.5,b67104aa-2d40-4192-90d0-c3567be89db1
+21,Story4,B4,12,14,11.5,a61b7430-4a5e-451f-ad5e-d1717f5eaaa7
+22,Story4,B5,14,13,11.5,f3d92ec6-9d87-47de-8367-b0d83b6eb331
+15,Story3,B4,9,11,11.5,4c3ff099-db78-4bb7-8805-6546a282ad02
+16,Story3,B5,11,10,11.5,60765639-ac98-4bca-b020-db6a991533d6
+1,Story2,B4,1,2,11.5,70252a6b-4e6c-45a2-b07c-4fe03fb15530
+2,Story2,B5,2,3,11.5,9516d9ea-3d27-41d7-bf41-3d9acd093344
+3,Story1,B4,4,5,11.5,3c6a0579-371a-4b98-88e8-b99548d54afa
+4,Story1,B5,5,6,11.5,6bef5c34-58d6-4aa9-bfc2-d4801a2ae9c8
