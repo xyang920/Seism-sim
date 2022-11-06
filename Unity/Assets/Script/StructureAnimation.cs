@@ -11,6 +11,7 @@ public class StructureAnimation : MonoBehaviour
     public float AnimationSpeed = 0.1f;
 
     public GameObject Platform;
+    private Vector3 _platformPos = Vector3.zero;
 
     [Header("Prefab Game Objects")]
     public GameObject JointPrefab;
@@ -159,6 +160,27 @@ public class StructureAnimation : MonoBehaviour
             if (!frame.GetComponent<Frame>()) { continue; }
             frame.GetComponent<Frame>().UpdateSection(totalDepth, flangeWidth, flangeThickness, webThickness);
         }
+
+        //setup Platform position
+        List<Vector3> groundPos = new List<Vector3>();
+        foreach (var kvp in _joints)
+        {
+            if (kvp.Value.Story != 0) { continue; }
+            groundPos.Add(kvp.Value.Position);
+            _platformPos += kvp.Value.Position;
+        }
+        _platformPos /= groundPos.Count * 1.000f;
+
+        //setup platform scale
+        var maxX = _joints.Values.ToList().Max(item => item.Position.x);
+        var minX = _joints.Values.ToList().Min(item => item.Position.x);
+        var maxZ = _joints.Values.ToList().Max(item => item.Position.z);
+        var minZ = _joints.Values.ToList().Min(item => item.Position.z);
+        float platX = (maxX - minX) * 2;
+        float platZ = (maxZ - minZ) * 2;
+        float size = platX;
+        if (platZ > platX) { size = platZ; }
+        Platform.transform.localScale = new Vector3(size, 1, size);
     }
 
     // Update is called once per frame
@@ -176,6 +198,7 @@ public class StructureAnimation : MonoBehaviour
             var groundDisplacement = groundDisplacementData[_currentTimeDisplacementIndex];
 
             float ground = groundDisplacement[1];
+            Platform.transform.position = new Vector3(_platformPos.x + ground * _mmToFeet, _platformPos.y, _platformPos.z);
 
             //update position by level
             foreach (var kvp in _joints)
