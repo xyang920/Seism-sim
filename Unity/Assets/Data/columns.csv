@@ -1,1 +1,19 @@
-TABLE:  Column Object Connectivity,,,,,,Unique Name,Story,ColumnBay,UniquePtI,UniquePtJ,Length,GUID,,,,,ft,43,Story8,C1,23,26,12,23cb3349-5900-4e74-891e-6e8e45b2dba344,Story8,C3,24,27,12,2ab431de-9e5d-42f7-83e9-20d9cc26ae7737,Story7,C1,20,23,12,f7f6dfa3-f0da-4ddc-9b96-b5ed4e2532f338,Story7,C3,21,24,12,8ed60d00-0122-4a22-b417-4233f90fbb2531,Story6,C1,17,20,12,ac7e2b72-a73a-4468-bfe1-0688c1038e6232,Story6,C3,18,21,12,4914735e-7060-467e-bd1e-e37e66a1d4dd25,Story5,C1,12,17,12,d49995fa-f7bd-4574-86e5-d9ad1bd7df6926,Story5,C3,13,18,12,41620e71-13bc-44fc-80c9-fbc1eeaefc2319,Story4,C1,9,12,12,389ff78f-a4f3-48a5-96a8-091ad2fd9a3e20,Story4,C3,10,13,12,d7848813-5ff4-4602-9cfc-d104cde6a8cb13,Story3,C1,1,9,12,e4beecac-fed3-4f80-b43f-9a4bec0b0e4b14,Story3,C3,3,10,12,360985e9-a59d-49cf-8aa1-15304255d8f75,Story2,C1,4,1,12,1ccd931c-a5ce-41c7-accc-c0d888b7bfb06,Story2,C3,6,3,12,c178bdae-1b6e-41fa-b7ac-e4bbf333816b7,Story1,C1,7,4,12,215248ba-0f69-49cb-97be-a6798905c59c8,Story1,C3,8,6,12,d5dea9a4-59d8-430b-811f-3e8b9f2c0a94
+﻿TABLE:  Column Object Connectivity,,,,,,
+Unique Name,Story,ColumnBay,UniquePtI,UniquePtJ,Length,GUID
+,,,,,ft,
+43,Story8,C1,23,26,12,23cb3349-5900-4e74-891e-6e8e45b2dba3
+44,Story8,C3,24,27,12,2ab431de-9e5d-42f7-83e9-20d9cc26ae77
+37,Story7,C1,20,23,12,f7f6dfa3-f0da-4ddc-9b96-b5ed4e2532f3
+38,Story7,C3,21,24,12,8ed60d00-0122-4a22-b417-4233f90fbb25
+31,Story6,C1,17,20,12,ac7e2b72-a73a-4468-bfe1-0688c1038e62
+32,Story6,C3,18,21,12,4914735e-7060-467e-bd1e-e37e66a1d4dd
+25,Story5,C1,12,17,12,d49995fa-f7bd-4574-86e5-d9ad1bd7df69
+26,Story5,C3,13,18,12,41620e71-13bc-44fc-80c9-fbc1eeaefc23
+19,Story4,C1,9,12,12,389ff78f-a4f3-48a5-96a8-091ad2fd9a3e
+20,Story4,C3,10,13,12,d7848813-5ff4-4602-9cfc-d104cde6a8cb
+13,Story3,C1,1,9,12,e4beecac-fed3-4f80-b43f-9a4bec0b0e4b
+14,Story3,C3,3,10,12,360985e9-a59d-49cf-8aa1-15304255d8f7
+5,Story2,C1,4,1,12,1ccd931c-a5ce-41c7-accc-c0d888b7bfb0
+6,Story2,C3,6,3,12,c178bdae-1b6e-41fa-b7ac-e4bbf333816b
+7,Story1,C1,7,4,12,215248ba-0f69-49cb-97be-a6798905c59c
+8,Story1,C3,8,6,12,d5dea9a4-59d8-430b-811f-3e8b9f2c0a94

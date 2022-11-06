@@ -413,7 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigationSpeed: 2.4
   shiftMultiplier: 2
-  sensitivity: 0.5
+  sensitivity: 1
   panSensitivity: 0.5
   mouseWheelZoomSpeed: 5
 --- !u!1 &1781656597
@@ -445,6 +445,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31eb72418a79f6848a75a41ff6ea37eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _beamsDataText: {fileID: 4900000, guid: 113c2c7fb2ba1754aa8a36e4d2a5a1f4, type: 3}
+  _bracesDataText: {fileID: 4900000, guid: a4f879fa8625a994083ce1390c1dff9c, type: 3}
+  _columnsDataText: {fileID: 4900000, guid: 13e2f426ec857ba469a12bace8030ddd, type: 3}
+  _jointDataText: {fileID: 4900000, guid: 6b35c35d4f3dbaa4db690c0f0dea0f8c, type: 3}
+  _frameSectionText: {fileID: 4900000, guid: 77ebca88df9e26f45955678ab0c508b1, type: 3}
+  _timeDisplacementDataText: {fileID: 4900000, guid: fbd0a953bc562a34ca138e495aa0381f, type: 3}
+  _groundDisplacementDataText: {fileID: 4900000, guid: 503b7f9809da1464bbaf25aeeff3ae45, type: 3}
   AnimationSpeed: 0.1
   Platform: {fileID: 638978479}
   JointPrefab: {fileID: 6833524527411205588, guid: d78dd96c38752fc49b6792edf01c361b, type: 3}

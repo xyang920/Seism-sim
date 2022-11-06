@@ -1,12 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 using System.IO;
 using System.Linq;
 
 public class StructureAnimation : MonoBehaviour
 {
+    [Header("Animation")]
+    public TextAsset _beamsDataText;
+
+    public TextAsset _bracesDataText;
+    public TextAsset _columnsDataText;
+    public TextAsset _jointDataText;
+    public TextAsset _frameSectionText;
+    public TextAsset _timeDisplacementDataText;
+    public TextAsset _groundDisplacementDataText;
+
     [Header("Animation")]
     public float AnimationSpeed = 0.1f;
 
@@ -44,7 +54,7 @@ public class StructureAnimation : MonoBehaviour
     {
         //get relative file paths
         string m_Path = Application.dataPath;
-        Debug.Log(m_Path);
+        //Debug.Log(m_Path);
         string beamsDataFilepath = m_Path + _beamsDataFilepath;
         string bracesDataFilepath = m_Path + _bracesDataFilepath;
         string columnsDataFilepath = m_Path + _columnsDataFilepath;
@@ -54,33 +64,35 @@ public class StructureAnimation : MonoBehaviour
         string goundDisplacementDataFilepath = m_Path + _groundDisplacementDataFilepath;
 
         //get time displacement
-        var strTimeDisplacementData = ReadCSV(timeDisplacementDataFilepath);
+        var strTimeDisplacementData = ReadCSV(timeDisplacementDataFilepath, _timeDisplacementDataText);
         for (int i = 3; i < strTimeDisplacementData.Count; i++)
         {
             var row = strTimeDisplacementData[i];
             List<float> floats = new List<float>();
             foreach (var str in row)
             {
+                if (string.IsNullOrEmpty(str)) { continue; }
                 floats.Add(float.Parse(str));
             }
             timeDisplacementData.Add(floats.ToArray());
         }
 
         //get time displacement
-        var strGroundDisplacementData = ReadCSV(goundDisplacementDataFilepath);
+        var strGroundDisplacementData = ReadCSV(goundDisplacementDataFilepath, _groundDisplacementDataText);
         for (int i = 3; i < strTimeDisplacementData.Count; i++)
         {
             var row = strTimeDisplacementData[i];
             List<float> floats = new List<float>();
             foreach (var str in row)
             {
+                if (string.IsNullOrEmpty(str)) { continue; }
                 floats.Add(float.Parse(str));
             }
             groundDisplacementData.Add(floats.ToArray());
         }
 
         //get frame sections, this doens't need to be global
-        var frameSectionData = ReadCSV(frameSectionFilepath);
+        var frameSectionData = ReadCSV(frameSectionFilepath, _frameSectionText);
         Dictionary<string, string[]> frameSections = new Dictionary<string, string[]>();
         for (int i = 3; i < frameSectionData.Count; i++)
         {
@@ -92,7 +104,7 @@ public class StructureAnimation : MonoBehaviour
         }
 
         //create joints
-        var jointData = ReadCSV(jointDataFilepath);
+        var jointData = ReadCSV(jointDataFilepath, _jointDataText);
         for (int i = 3; i < jointData.Count; i++) //formated to start at index 3
         {
             //0 = name, 2 = Story, 5 = X, 7 = Z (translate to Y for Unity purposes)
@@ -113,7 +125,7 @@ public class StructureAnimation : MonoBehaviour
             if (storyText.ToLower() != "base")
             {
                 storyText = GetNumbers(row[2]);
-                Debug.Log(storyText);
+                //Debug.Log(storyText);
                 int.TryParse(storyText, out story);
             }
             //setup Joint Object
@@ -123,16 +135,18 @@ public class StructureAnimation : MonoBehaviour
 
         //get geometry members into a dictionary by name with vertices as the value
         List<string[]> geometryData = new List<string[]>();
-        var beams = ReadCSV(beamsDataFilepath); beams.RemoveRange(0, Mathf.Min(3, beams.Count));
+        var beams = ReadCSV(beamsDataFilepath, _beamsDataText); beams.RemoveRange(0, Mathf.Min(3, beams.Count));
         geometryData.AddRange(beams);
-        var braces = ReadCSV(bracesDataFilepath); braces.RemoveRange(0, Mathf.Min(3, braces.Count));
+        var braces = ReadCSV(bracesDataFilepath, _bracesDataText); braces.RemoveRange(0, Mathf.Min(3, braces.Count));
         geometryData.AddRange(braces);
-        var columns = ReadCSV(columnsDataFilepath); columns.RemoveRange(0, Mathf.Min(3, columns.Count));
+        var columns = ReadCSV(columnsDataFilepath, _columnsDataText); columns.RemoveRange(0, Mathf.Min(3, columns.Count));
+        Debug.Log(columns.Count);
         geometryData.AddRange(columns);
         for (int i = 0; i < geometryData.Count; i++)
         {
             //0 = name, 3 = start, 4 = end
             var parts = geometryData[i];
+            if (parts.Length <= 4) { continue; }
             string name = parts[0];
             if (_connections.ContainsKey(name)) { continue; }
 
@@ -197,14 +211,16 @@ public class StructureAnimation : MonoBehaviour
 
             var groundDisplacement = groundDisplacementData[_currentTimeDisplacementIndex];
 
-            float ground = groundDisplacement[1];
+            float ground = 0;
+            if (groundDisplacement.Length >= 2) { ground = groundDisplacement[1]; }
             Platform.transform.position = new Vector3(_platformPos.x + ground * _mmToFeet, _platformPos.y, _platformPos.z);
 
             //update position by level
             foreach (var kvp in _joints)
             {
                 var joint = kvp.Value;
-                var adjust = displacement[joint.Story];
+                float adjust = 0;
+                if (displacement.Count() > joint.Story) { adjust = displacement[joint.Story]; }
                 var pos = joint.Position;
                 pos.x += adjust * _mmToFeet;
                 pos.x += ground * _mmToFeet;
@@ -239,6 +255,30 @@ public class StructureAnimation : MonoBehaviour
     private static string GetNumbers(string input)
     {
         return new string(input.Where(c => char.IsDigit(c)).ToArray());
+    }
+
+    private List<string[]> ReadCSV(string filepath, TextAsset textAsset)
+    {
+        Debug.Log(filepath);
+        if (File.Exists(filepath))
+        {
+            return ReadCSV(filepath);
+        }
+        return ReadCSV(textAsset);
+    }
+
+    private List<string[]> ReadCSV(TextAsset textAsset)
+    {
+        char[] delims = new[] { '\n' }; //'\r',
+        var lines = textAsset.text.Split(delims);
+        Debug.Log("lines.Length: " + lines.Length);
+        List<string[]> data = new List<string[]>();
+        foreach (var line in lines)
+        {
+            var parts = line.Split(',');
+            data.Add(parts);
+        }
+        return data;
     }
 
     private List<string[]> ReadCSV(string filepath)
